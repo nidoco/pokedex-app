@@ -9,10 +9,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        // Ruta para la lista principal
+        {/* Ruta para la lista principal */}
         <Route path="/" element={<Home />} />
         
-        // Ruta para el detalle usando el nombre como parámetro
+        {/* Ruta para el detalle usando el nombre como parámetro */}
         <Route path="/pokemon/:name" element={<PokemonDetailPage />} />
       </Routes>
     </BrowserRouter>
