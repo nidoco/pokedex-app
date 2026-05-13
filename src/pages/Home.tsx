@@ -14,7 +14,7 @@ export const Home = () => {
     });
   }, []);
 
-  if (loading) return <p className="status-text">Cargando datos papu...</p>;
+  if (loading) return <p className="status-text">Cargando datos...</p>;
 
   return (
     <div className="app-container">

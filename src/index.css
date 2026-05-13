@@ -22,7 +22,6 @@ body {
 
 .pokemon-grid {
   display: grid;
-  /* Configurado para 5 columnas como pediste */
   grid-template-columns: repeat(5, 1fr); 
   gap: 1.5rem;
 }
@@ -79,15 +78,12 @@ body {
   cursor: pointer;
   margin-bottom: 20px;
 }
-/* --- Ajustes para el Detalle (Clase 2) --- */
-
 .info-row {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 1.5rem; /* Espacio antes de los tipos */
+  margin-bottom: 1.5rem;
 }
-
 /* Badges de Peso y Altura */
 .info-badge {
   background-color: #0f172a;
@@ -129,7 +125,7 @@ body {
   letter-spacing: 1px;
 }
 
-/* Lista de estadísticas más limpia */
+/* Lista de estadísticas */
 .stats-list {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Dos columnas para que no sea una lista infinita */

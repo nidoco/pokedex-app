@@ -28,7 +28,7 @@ export const PokemonDetailPage = () => {
         />
 
         <div className="stats-box">
-          {/* Contenedor de Peso y Altura con badges individuales */}
+          // Contenedor de Peso y Altura con badges individuales 
           <div className="info-row">
             <div className="info-badge">
               <span className="label">PESO</span>
@@ -40,7 +40,7 @@ export const PokemonDetailPage = () => {
             </div>
           </div>
 
-          {/* Fila de tipos con margen superior para no amontonarse */}
+          // Fila de tipos con margen superior para no amontonarse
           <div className="types-row">
             {pokemon.types.map(t => (
               <span key={t.type.name} className={`tag ${t.type.name}`}>
