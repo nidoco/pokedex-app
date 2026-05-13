@@ -48,3 +48,131 @@ body {
   text-transform: capitalize;
   color: #f8fafc;
 }
+.detail-container {
+  background-color: #1e293b;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.detail-container img {
+  width: 250px;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+}
+
+.tag {
+  background: #a855f7;
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin: 0 5px;
+  font-size: 0.9rem;
+}
+
+.back-button {
+  background: transparent;
+  border: 1px solid #38bdf8;
+  color: #38bdf8;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+/* --- Ajustes para el Detalle (Clase 2) --- */
+
+.info-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem; /* Espacio antes de los tipos */
+}
+
+/* Badges de Peso y Altura */
+.info-badge {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  padding: 0.8rem 1.5rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+
+.info-badge .label {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+}
+
+.info-badge .value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #f8fafc;
+}
+
+/* Arreglo para los Tipos */
+.types-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem; /* Espacio extra para que no se pegue al texto de arriba */
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  color: #38bdf8;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Lista de estadísticas más limpia */
+.stats-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas para que no sea una lista infinita */
+  gap: 0.8rem;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  border-left: 3px solid #a855f7;
+}
+
+.stat-name {
+  text-transform: capitalize;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: #e2e8f0;
+}
+.tag.grass { background-color: #78C850; }
+.tag.fire { background-color: #F08030; }
+.tag.water { background-color: #6890F0; }
+.tag.poison { background-color: #A040A0; }
+.tag.bug { background-color: #A8B820; }
+.tag.flying { background-color: #A890F0; }
+.tag.normal { background-color: #A8A878; }
+.tag.electric { background-color: #F8D030; color: #000; } 
+.tag.ground { background-color: #E0C068; }
+.tag.fairy { background-color: #EE99AC; }
+.tag.fighting { background-color: #C03028; }
+.tag.psychic { background-color: #F85888; }
+.tag.rock { background-color: #B8A038; }
+.tag.ghost { background-color: #705898; }
+.tag.ice { background-color: #98D8D8; color: #000; }
+.tag.dragon { background-color: #7038F8; }
+.tag.dark { background-color: #705848; }
+.tag.steel { background-color: #B8B8D0; color: #000; }
