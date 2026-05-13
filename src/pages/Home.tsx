@@ -8,7 +8,7 @@ export const Home = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    getPokemonList(30).then(data => {
+    getPokemonList(610).then(data => {
       setPokemonList(data.results);
       setLoading(false);
     });
@@ -21,7 +21,6 @@ export const Home = () => {
       <h1 className="title">Pokédex</h1>
       <div className="pokemon-grid">
         {pokemonList.map((pokemon) => (
-          /* Usamos el componente reutilizable aquí */
           <PokemonCard key={pokemon.name} pokemon={pokemon} />
         ))}
       </div>
