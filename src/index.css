@@ -1,3 +1,4 @@
+ /* Estilo general */
 body {
   margin: 0;
   background-color: #0f172a;
@@ -20,25 +21,53 @@ body {
   text-transform: uppercase;
 }
 
+.status-text {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.status-text.error, 
+.status-text.alert {
+  color: #f43f5e;
+  font-weight: bold;
+}
+/* Grid, componentes y favs */
 .pokemon-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr); 
   gap: 1.5rem;
 }
 
-.pokemon-card {
+.card-wrapper {
   background-color: #1e293b;
   border: 1px solid #334155;
   border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: transform 0.3s ease;
 }
 
-.pokemon-card:hover {
+.card-wrapper:hover {
   transform: translateY(-5px);
-  border-color: #a855f7;
-  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+.card-wrapper .pokemon-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pokemon-number {
+  color: #38bdf8;
+  font-size: 0.85rem;
+  font-weight: bold;
 }
 
 .pokemon-name {
@@ -46,7 +75,74 @@ body {
   font-weight: bold;
   text-transform: capitalize;
   color: #f8fafc;
+  font-size: 1.2rem;
 }
+
+/* Botón de favoritos */
+.fav-button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #475569;
+  color: #94a3b8;
+  padding: 0.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.fav-button:hover {
+  background: rgba(234, 179, 8, 0.1);
+  border-color: #eab308;
+  color: #eab308;
+}
+
+.fav-button.is-fav {
+  background: #eab308;
+  border-color: #eab308;
+  color: #0f172a;
+  font-weight: bold;
+}
+/* Sección de búsqueda y filtros */
+.search-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.search-input {
+  flex: 1;
+  max-width: 400px;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.type-select {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.type-select:focus {
+  border-color: #a855f7;
+}
+/* Pantalla de detalle */
 .detail-container {
   background-color: #1e293b;
   border-radius: 20px;
@@ -61,14 +157,6 @@ body {
   filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
 }
 
-.tag {
-  background: #a855f7;
-  padding: 5px 15px;
-  border-radius: 20px;
-  margin: 0 5px;
-  font-size: 0.9rem;
-}
-
 .back-button {
   background: transparent;
   border: 1px solid #38bdf8;
@@ -77,14 +165,20 @@ body {
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 20px;
+  transition: all 0.2s ease;
 }
+
+.back-button:hover {
+  background: rgba(56, 189, 248, 0.1);
+}
+
 .info-row {
   display: flex;
   justify-content: center;
   gap: 2rem;
   margin-bottom: 1.5rem;
 }
-/* Badges de Peso y Altura */
+
 .info-badge {
   background-color: #0f172a;
   border: 1px solid #334155;
@@ -108,12 +202,11 @@ body {
   color: #f8fafc;
 }
 
-/* Arreglo para los Tipos */
 .types-row {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1rem; /* Espacio extra para que no se pegue al texto de arriba */
+  margin-top: 1rem;
   margin-bottom: 2rem;
 }
 
@@ -125,10 +218,9 @@ body {
   letter-spacing: 1px;
 }
 
-/* Lista de estadísticas */
 .stats-list {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas para que no sea una lista infinita */
+  grid-template-columns: 1fr 1fr; 
   gap: 0.8rem;
   text-align: left;
   max-width: 400px;
@@ -154,6 +246,15 @@ body {
   font-weight: bold;
   color: #e2e8f0;
 }
+/* Etiquetas de tipos */
+.tag {
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+}
+
 .tag.grass { background-color: #78C850; }
 .tag.fire { background-color: #F08030; }
 .tag.water { background-color: #6890F0; }

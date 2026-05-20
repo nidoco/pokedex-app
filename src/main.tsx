@@ -7,8 +7,8 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
+    <BrowserRouter> {/* Configuración de rutas para la aplicación */}
+      <Routes> {/* Definición de rutas para la aplicación */}
         {/* Ruta para la lista principal */}
         <Route path="/" element={<Home />} />
         
@@ -16,5 +16,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/pokemon/:name" element={<PokemonDetailPage />} />
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode> 
 );
