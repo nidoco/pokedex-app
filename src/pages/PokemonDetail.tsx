@@ -13,11 +13,11 @@ export const PokemonDetailPage = () => {
     if (name) getPokemonDetail(name).then(setPokemon);
   }, [name]);
 
-  if (!pokemon) return <p className="status-text">Buscando datos...</p>;
+  if (!pokemon) return <p className="status-text">Buscando datos</p>;
 
   return (
     <div className="app-container">
-      <button onClick={() => navigate(-1)} className="back-button">← Volver al listado</button>
+      <button onClick={() => navigate(-1)} className="back-button">Volver al listado</button>
       
       <div className="detail-container">
         <h1 className="pokemon-title">{pokemon.name}</h1>

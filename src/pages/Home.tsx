@@ -87,7 +87,7 @@ export const Home = () => {
     return pokemon.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  if (loading) return <p className="status-text">Buscando Pokémon...</p>;
+  if (loading) return <p className="status-text">Buscando Pokémon</p>;
   if (error) return <p className="status-text error">{error}</p>;
 
   return (
@@ -98,7 +98,7 @@ export const Home = () => {
       <div className="search-container">
         <input 
           type="text" 
-          placeholder="Buscar Pokémon por nombre..." 
+          placeholder="Buscar Pokémon por nombre" 
           className="search-input"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -109,7 +109,7 @@ export const Home = () => {
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
         >
-          <option value="">Todos los tipos</option>
+          <option value="">Elegir tipo</option>
           {types.map(t => (
             <option key={t.name} value={t.name}>
               {t.name}
