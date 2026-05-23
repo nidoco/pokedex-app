@@ -1,4 +1,4 @@
- /* Estilo general */
+/* Estilo general */
 body {
   margin: 0;
   background-color: #0f172a;
@@ -15,7 +15,6 @@ body {
 .title {
   text-align: center;
   color: #38bdf8;
-  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
   font-size: 3rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
@@ -32,6 +31,7 @@ body {
   color: #f43f5e;
   font-weight: bold;
 }
+
 /* Grid, componentes y favs */
 .pokemon-grid {
   display: grid;
@@ -53,6 +53,7 @@ body {
 .card-wrapper:hover {
   transform: translateY(-5px);
 }
+
 .card-wrapper .pokemon-card {
   background: transparent;
   border: none;
@@ -102,6 +103,7 @@ body {
   color: #0f172a;
   font-weight: bold;
 }
+
 /* Sección de búsqueda y filtros */
 .search-container {
   display: flex;
@@ -125,7 +127,6 @@ body {
 
 .search-input:focus {
   border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
 }
 
 .type-select {
@@ -142,6 +143,7 @@ body {
 .type-select:focus {
   border-color: #a855f7;
 }
+
 /* Pantalla de detalle */
 .detail-container {
   background-color: #1e293b;
@@ -154,7 +156,6 @@ body {
 
 .detail-container img {
   width: 250px;
-  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
 }
 
 .back-button {
@@ -246,6 +247,7 @@ body {
   font-weight: bold;
   color: #e2e8f0;
 }
+
 /* Etiquetas de tipos */
 .tag {
   padding: 5px 15px;
@@ -273,3 +275,116 @@ body {
 .tag.dragon { background-color: #7038F8; }
 .tag.dark { background-color: #705848; }
 .tag.steel { background-color: #B8B8D0; color: #000; }
+/* Comparación */
+.vs-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #a855f7;
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+  align-self: center;
+}
+
+.comparison-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: start;
+}
+
+.compare-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.compare-card img {
+  width: 100%;
+  max-width: 200px;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.3));
+}
+
+.placeholder-text {
+  color: #64748b;
+  font-style: italic;
+}
+
+.compare-stats-panel {
+  background-color: #1e293b;
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid #334155;
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  align-items: center;
+}
+
+.compare-row:last-child {
+  border-bottom: none;
+}
+
+.compare-stat-title {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  letter-spacing: 1px;
+}
+
+.compare-val-left, .compare-val-right {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e2e8f0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.stat-winner {
+  color: #10b981;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.stat-loser {
+  color: #ef4444; 
+  opacity: 0.7;
+}
+/* Estilos para el menú desplegable personalizado */
+.custom-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  margin-top: 0.3rem;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.dropdown-item {
+  padding: 0.6rem 1rem;
+  color: #f8fafc;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+}

@@ -17,7 +17,7 @@ export const PokemonDetailPage = () => {
 
   return (
     <div className="app-container">
-      <button onClick={() => navigate(-1)} className="back-button">Volver al listado</button>
+      <button onClick={() => navigate(-1)} className="back-button">Volver</button>
       
       <div className="detail-container">
         <h1 className="pokemon-title">{pokemon.name}</h1>

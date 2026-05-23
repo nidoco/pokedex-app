@@ -1,73 +1,25 @@
-# React + TypeScript + Vite
+# Pokédex App - Entrega Final
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web interactiva de Pokémon construida con **React, TypeScript y Vite**, utilizando la API oficial ([PokéAPI](https://pokeapi.co/)).
 
-Currently, two official plugins are available:
+## 🚀 Características
+* **Catálogo:** Muestra los primeros 610 Pokémon.
+* **Búsqueda y filtros:** Buscador por nombre y filtrado por tipo.
+* **Favoritos:** Botón para guardar favoritos de forma local (`localStorage`) y botón de filtro rápido para verlos.
+* **Detalle:** Pantalla con la información, fotos y estadísticas de cada Pokémon.
+* **Comparador:** Arena interactiva para buscar y comparar las estadísticas de dos Pokémon a la vez.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tecnologías
+* React (Hooks)
+* TypeScript
+* React Router DOM
+* Axios
+* CSS Grid / Flexbox
 
-## React Compiler
+## 💻 Instalación y ejecución
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Para correr el proyecto localmente, ejecuta estos comandos en tu terminal:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Instalar dependencias:**
+   ```bash
+   npm install

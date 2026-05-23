@@ -1,18 +1,25 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import { getPokemonList, getPokemonTypes, getPokemonByUrl } from '../services/pokemonService';
 import { PokemonCard } from '../components/PokemonCard';  
 import type { PokemonBase } from '../types/pokemon';
 
 export const Home = () => {
-  /* Lista completa de Pokémon */
+  const navigate = useNavigate();
+  
+  /* Estados de listas */
   const [pokemonList, setPokemonList] = useState<PokemonBase[]>([]); 
   const [displayList, setDisplayList] = useState<PokemonBase[]>([]); 
-  const [loading, setLoading] = useState<boolean>(true);
   const [types, setTypes] = useState<{ name: string; url: string }[]>([]); 
-  /* Lista de Pokémon favoritos */
   const [favorites, setFavorites] = useState<string[]>([]); 
+  
+  /* Estados de filtros */
   const [searchTerm, setSearchTerm] = useState<string>(''); 
   const [selectedType, setSelectedType] = useState<string>(''); 
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState<boolean>(false); // Nuevo estado para alternar favoritos
+  
+  /* Estados de carga y error */
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null); 
 
   /* Cargar datos iniciales */
@@ -24,14 +31,15 @@ export const Home = () => {
         setDisplayList(pokemonData.results); 
 
         const typesData = await getPokemonTypes();
-        setTypes(typesData.results);
-        /* Revisa si hay favoritos guardados */
+        const validTypes = typesData.results;
+        setTypes(validTypes);
+        
         const savedFavs = localStorage.getItem('pokedex_favorites');
         if (savedFavs) {
           setFavorites(JSON.parse(savedFavs));
         }
       } catch (err) {
-        setError("Hubo un problema al conectar con el laboratorio del Profesor Oak.");
+        setError("Hubo un problema al conectar.");
       } finally {
         setLoading(false);
       }
@@ -39,7 +47,7 @@ export const Home = () => {
 
     loadInitialData();
   }, []);
-/* Filtrar Pokémon por tipo en el menú desplegable */
+
   useEffect(() => {
     const filterByType = async () => {
       if (selectedType === '') {
@@ -49,7 +57,7 @@ export const Home = () => {
 
       setLoading(true);
       try {
-        const targetType = types.find(t => t.name === selectedType); /* Busca el tipo seleccionado */
+        const targetType = types.find(t => t.name === selectedType);
         if (targetType) {
           const data = await getPokemonByUrl(targetType.url);
           const filteredByRange = data.results.filter(p => {
@@ -66,12 +74,15 @@ export const Home = () => {
         setLoading(false);
       }
     };
-    if (types.length > 0) {
+
+    if (pokemonList.length > 0) {
+      // Al cambiar de tipo, quitamos el filtro de favoritos para evitar confusiones visuales
+      setShowFavoritesOnly(false);
       filterByType();
     }
-  }, [selectedType, pokemonList, types]);
+  }, [selectedType]); 
 
-/* Agregar o quitar Pokémon de favs */
+  /* Agregar o quitar Pokémon de favoritos */
   const toggleFavorite = (name: string) => {
     let updatedFavs: string[];
     if (favorites.includes(name)) {
@@ -82,8 +93,13 @@ export const Home = () => {
     setFavorites(updatedFavs);
     localStorage.setItem('pokedex_favorites', JSON.stringify(updatedFavs)); 
   };
-/* Filtrar Pokémon por nombre de manera correcta */
+
+  /* Filtrar en tiempo real por lo que se escribe y por favoritos */
   const filteredPokemon = displayList.filter((pokemon) => {
+    // Si la opción de favoritos está activa, filtramos los que no estén en la lista
+    if (showFavoritesOnly && !favorites.includes(pokemon.name)) {
+      return false;
+    }
     return pokemon.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
@@ -91,14 +107,13 @@ export const Home = () => {
   if (error) return <p className="status-text error">{error}</p>;
 
   return (
-    /* Filtros de búsqueda */
     <div className="app-container">
       <h1 className="title">Pokédex</h1>
 
       <div className="search-container">
         <input 
           type="text" 
-          placeholder="Buscar Pokémon por nombre" 
+          placeholder="Buscar Pokémon por nombre..." 
           className="search-input"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -109,13 +124,35 @@ export const Home = () => {
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
         >
-          <option value="">Elegir tipo</option>
+          <option value="">Todos los tipos</option>
           {types.map(t => (
             <option key={t.name} value={t.name}>
               {t.name}
             </option>
           ))}
         </select>
+
+        {/* Botón para alternar la vista entre todos o favoritos */}
+        <button
+          className="type-select"
+          onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+          style={{ 
+            cursor: 'pointer',
+            backgroundColor: showFavoritesOnly ? '#eab308' : '',
+            color: showFavoritesOnly ? '#0f172a' : '',
+            fontWeight: showFavoritesOnly ? 'bold' : 'normal'
+          }}
+        >
+          {showFavoritesOnly ? 'Viendo Favoritos' : 'Ver Favoritos'}
+        </button>
+
+        <button 
+          className="type-select" 
+          onClick={() => navigate('/compare')}
+          style={{ cursor: 'pointer' }}
+        >
+          Comparar Pokémon
+        </button>
       </div>
 
       {filteredPokemon.length === 0 && (
